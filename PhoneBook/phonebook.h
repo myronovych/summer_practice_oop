@@ -53,6 +53,19 @@ public:
         return result;
     }
 
+    vector<int> findContactByNumber(const string& phoneNum) {
+        vector<int> result; //position which match number
+        for (size_t i = 0; i < getContacts().size(); ++i) {
+            for(int j = 0; j < (int) getContacts().at(i).getNums().size(); j++){
+                if(getContacts().at(i).getNums().at(j).find(phoneNum) != string::npos){
+                    result.push_back(i);
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
 };
 
 ostream& operator<<( ostream& stream, const Phonebook& phonebook){
