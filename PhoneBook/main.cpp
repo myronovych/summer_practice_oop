@@ -15,7 +15,6 @@ int main(int argc, char *argv[]){
         cout << "1. Show contacts \n2. Add contact. \n3. Remove contact. \n4. Find contact by name. \n5. Find contact by number. \n6.Quit\n";
         do{
             cout << "Enter number from 1 to 6" << endl;
-            cin >> std::stoi(choice);
         } while(choice < 1 || choice > 6);        cout << "What do you want to do? " << endl;
         while(choice < 1 || choice > 7){
             cin >> choice;
