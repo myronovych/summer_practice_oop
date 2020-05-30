@@ -14,11 +14,10 @@ int main(int argc, char *argv[]){
     while(choice != 6){
         cout << "1. Show contacts \n2. Add contact. \n3. Remove contact. \n4. Find contact by name. \n5. Find contact by number. \n6.Quit\n";
         do{
+            cout << "What do you want to do? " << endl;
             cout << "Enter number from 1 to 6" << endl;
-        } while(choice < 1 || choice > 6);        cout << "What do you want to do? " << endl;
-        while(choice < 1 || choice > 7){
             cin >> choice;
-        }
+        } while(choice < 1 || choice > 6);
         if(choice == 1) {
             cout << book << endl;
         } else if(choice == 2){
@@ -43,8 +42,8 @@ int main(int argc, char *argv[]){
             cin >> name;
             vector<int> expected= book.findContactByName(name);
             if(expected.size() == 0) continue;
-            for(int i = 0; i < (int) expected.size();i++){
-                cout << i << ") " << book.getContacts().at(expected.at(i));
+            for(int i = 1; i <= (int) expected.size();i++){
+                cout << i << ") " << book.getContacts().at(expected.at(i-1));
             }
 
             int position;
@@ -58,7 +57,7 @@ int main(int argc, char *argv[]){
             cout << "1. Add number \n2. Remove number \n3. Back" << endl;
             cout << "Choose number of action" << endl;
             cin >> action;
-
+            position -= 1;
             if(action == 1){
                 string num;
                 cout << "Enter number: " << endl;
@@ -78,8 +77,8 @@ int main(int argc, char *argv[]){
             cin >> num;
             vector<int> expected= book.findContactByNumber(num);
             if(expected.size() == 0) continue;
-            for(int i = 0; i < (int) expected.size();i++){
-                cout << i << ") " << book.getContacts().at(expected.at(i));
+            for(int i = 1; i <= (int) expected.size();i++){
+                cout << i << ") " << book.getContacts().at(expected.at(i-1));
             }
 
             int position;
@@ -105,8 +104,11 @@ int main(int argc, char *argv[]){
                 cout << "Which number to remove?" << endl;
                 int pos;
                 cin >> pos;
-                book.getContacts().at(expected.at(position)).deleteNum(pos);
+                book.getContacts().at(expected.at(position-1)).deleteNum(pos);
             }
+        } else if(choice == 6){
+            cout << "Bye-bye!" << endl;
+            break;
         }
         choice = 0;
     }
